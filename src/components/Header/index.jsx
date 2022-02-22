@@ -1,9 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import logo from '../../logo.svg'
 
-function App() {
-  return (
-    <div className="App">
+export default class Header extends Component {
+  render() {
+    return (
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -18,8 +19,16 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
-  );
-}
+    )
+  }
 
-export default App;
+  componentDidMount() {
+    setTimeout(() => {
+      this.dieSelf()
+    }, 2000)
+  }
+
+  dieSelf() {
+    ReactDOM.unmountComponentAtNode(document.querySelector('#root'))
+  }
+}
